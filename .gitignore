@@ -130,3 +130,5 @@ dmypy.json
 
 # object
 output
+data
+std.out
