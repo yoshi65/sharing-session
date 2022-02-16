@@ -6,8 +6,31 @@ spec:
   organization: yoshi65
   secretsMountPath: "/tmp/secrets"
   module:
-    source: "git::https://github.com/yoshi65/sharing-session.git//terraform-cloud-operator/test-module"
+    source: "git::https://github.com/joatmon08/queues.git"
+  outputs:
+    - key: queue_urls
+      moduleOutputName: queue_urls
+    - key: json_string
+      moduleOutputName: json_string
   variables:
+    - key: application
+      value: goodbye
+      sensitive: false
+      environmentVariable: false
+    - key: environment
+      value: preprod
+      sensitive: false
+      environmentVariable: false
+    - key: some_list
+      value: '["hello","queues"]'
+      hcl: true
+      sensitive: false
+      environmentVariable: false
+    - key: some_object
+      value: '{hello={name= "test"}}'
+      hcl: true
+      sensitive: false
+      environmentVariable: false
     - key: AWS_DEFAULT_REGION
       valueFrom:
         configMapKeyRef:
@@ -20,4 +43,8 @@ spec:
       environmentVariable: true
     - key: AWS_SECRET_ACCESS_KEY
       sensitive: true
+      environmentVariable: true
+    - key: CONFIRM_DESTROY
+      value: "1"
+      sensitive: false
       environmentVariable: true
