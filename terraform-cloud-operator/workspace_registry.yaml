@@ -7,20 +7,7 @@ spec:
   secretsMountPath: "/tmp/secrets"
   module:
     source: "git::https://github.com/yoshi65/sharing-session.git//terraform-cloud-operator/test-module"
-  outputs:
-    - key: url
-      moduleOutputName: this_sqs_queue_id
-    - key: arn
-      moduleOutputName: this_sqs_queue_arn
   variables:
-    - key: name
-      value: "test"
-      sensitive: false
-      environmentVariable: false
-    - key: fifo_queue
-      value: "true"
-      sensitive: false
-      environmentVariable: false
     - key: AWS_DEFAULT_REGION
       valueFrom:
         configMapKeyRef:
